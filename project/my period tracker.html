@@ -21,14 +21,16 @@ div {text-align: center;}
 <body>
  
   <link rel="stylesheet" type="text/css" href="../css,style.css"> 
-<h1 style="background-color:rgb(236, 15, 118);" ><p style="font-family: 'Pacifico';"> My Period Tracker</p>
+<h1 style="background-color:rgb(246, 28, 130);" ><p style="font-family: 'Pacifico';"> My Period Tracker</p>
  </h1>
  <nav class="navbar navbar-light bg-light" style="background-color: #deddf3;">
     <a class="navbar-brand"><b>Period Tracker</b></a>
     <form class="form-inline">
         <a class="nav-link" href="#track-now-section"><b>Track Now</b></a>
+        <a class="nav-link" href="#Do"><b>Do's &Don't's</b></a>
         <a class="nav-link" href="#sign-in-section"><b>Sign In</b></a>
         <a class="nav-link" href="#contact-us-section"><b>Contact Us</b></a>
+        
     </form>
   </nav>
   <head>
@@ -48,14 +50,14 @@ div {text-align: center;}
         </p>
     </div>
 </body>
-<p style="background-color:rgb(203, 71, 255);"><b style="font-family: 'Pacifico';"> My Period Tracker</b>  </p>
+<p style="background-color:rgb(203, 95, 246);"><b style="font-family: 'Pacifico';"> My Period Tracker</b>  </p>
    
    
   <section class="p-4 bg-light"  id="track-now-section" >
     <div class="container">
       <div class="row align-items-center">
         <div class="col-md-12">
-        <b><h7 class="text-center p-3">TRACK YOUR NEXT PERIOD ,
+        <b><h7 class="text-center p-3" >TRACK YOUR NEXT PERIOD ,
           IN A SHORT PERIOD OF TIME</h7></b>
        </div>
       
@@ -64,44 +66,136 @@ div {text-align: center;}
     </div>
     </div>
     </div>
-    </section>
-    
+  
+
 	<style>
 	.gfg {
 		width:auto;
 		text-align:right;
 		padding-top: 10px;
 		padding-right:300px;
-	}
-	.img-container {
-		      float :left;
- 			 width: 55%;
-			
-			}
-</style>
-<div class = "gfg">
-<div class="img-container">
-<p id="my-image"><img src="image 3.jpg">
-</p>
-</div>
-
-<label for="fname">When was your last period:</label><br>
-<form action="/action_page.php">
-    <input type="date" data-date-inline-picker="true" />
-    <br>
-    <form action="/action_page.php">
-      <label for="lname">How long did it last:</label><br>
-        <input type="text" id="fname" name="fname" value=" "><br>
-        <label for="lname">How long is your menstrual cycle:</label><br>
-        <input type="text" id="lname" name="lname value=" "><br><br>
-      
-        <input type="submit" value="TRACK NOW">
-        <p></p>
-      </form>  
-
-    </div>
+    background-image: url(image\ 6.jpg);
+    
+    background-size: 300px 250px;
     
 
+			}
+	
+	.img-container {
+		      float :left;
+
+        margin-left: 200px;
+       
+			height: 100px; 
+      
+  }
+  #Do {
+    background-image: url('image 7.jpg'); 
+  background-size:contain; 
+  background-repeat: no-repeat; 
+  background-color: #f9f9f9;
+  background-size: 1600px 800px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  padding: 20px;
+}
+
+#Do ul {
+  list-style-type: disc;
+  margin-left: 20px;
+}
+
+#Do ul h3 {
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #333; 
+}
+
+#Do ul li {
+  margin-bottom: 5px;
+}
+
+#Do ul li:before {
+  font-size: 12px; 
+  margin-right: 5px;
+}
+
+  
+  
+</style>
+<div class = "gfg">
+  <div class="img-container">
+<p id="my-image"><img src="image 3.jpg">
+
+</div>
+<br>
+<label for="lastPeriodDate"><b>Last Period Date:</b></label>
+<input type="date" id="lastPeriodDate">
+<br>
+<br>
+<label for="cycleLength"><b>Average Cycle Length (in days):</b></label>
+<input type="number" id="cycleLength">
+<br>
+<br>
+<button onclick="calculateNextPeriod()" id="cal"  style="background-color: #ee32f8;"><b>Calculate Next Period</b></button>
+<br>
+<br>
+<p id="result" id="res"></p>
+</p>
+<script>
+    function calculateNextPeriod() {
+        const lastPeriodDateInput = document.getElementById('lastPeriodDate');
+        const cycleLengthInput = document.getElementById('cycleLength');
+        const resultElement = document.getElementById('result');
+
+        const lastPeriodDate = new Date(lastPeriodDateInput.value);
+        const cycleLength = parseInt(cycleLengthInput.value);
+
+        if (isNaN(cycleLength)) {
+            resultElement.textContent = 'Please enter a valid cycle length.';
+            return;
+        }
+
+        if (isNaN(lastPeriodDate.getTime())) {
+            resultElement.textContent = 'Please enter a valid last period date.';
+            return;
+        }
+
+        const nextPeriodDate = new Date(lastPeriodDate.getTime() + cycleLength * 24 * 60 * 60 * 1000);
+
+        const nextPeriodDateString = nextPeriodDate.toDateString();
+        resultElement.textContent = 'Your next period is expected on ' + nextPeriodDateString;
+        resultElement.style.textAlign = 'right'; // Center-align the text
+        resultElement.style.fontWeight = 'bold';
+    }
+</script>
+<br>
+
+    </div>
+    </section>
+
+    <section class="d" id="Do">
+      <ul>
+        <h3><b>Here are some things to do during menstruation:</b></h3>
+        <li>Maintain a period calendar</li>
+         <li> Stay hydrated</li>
+          <li>Sleep well</li>
+          <li>Bathe regularly</li>
+          <li>Use regular water or gentle soap to clean the vaginal area</li>
+         <li> Change pads regularly and carry spare pads</li>
+          <li>Use mild heat therapy to relieve period pain</li>
+      </ul>
+      <ul>
+        <h3><b>Here are some things to avoid during menstruation:</b></h3>
+        <li>Putting perfume, cream, or other products on your vagina</li>
+         <li>Using cleansers with artificial fragrances</li>
+          <li>Douching</li>
+          <li>Scrubbing</li>
+          <li>Avoiding physical activity</li>
+         <li>Shying away from physical intimacy</li>
+          <li>Waxing</li>
+      </ul>
+    </section>
     
   <section class="p-4 bg-secondary text-white"  id="sign-in-section" >
   <div class="container">
